@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Weather</title>
+</head>
+<body>
+    <h1 id="tiempo"></h1>
+    <table>
+        <tr>
+            <td id="today"></td>
+            <td><span id="curr"></span>&#176;F</td>
+            <td><span id='rain'></span> RAINING</td>
+        </tr>
+        <tr>
+            <td id="choose"></td>
+            <td><span id="later"></span>&#176;F</td>
+            <td><span id='latrain'></span> RAIN</td>
+        </tr>
+    </table>
+    <script>
+        
+        var time = document.getElementById('tiempo')
+        var now = new Date()
+        var iter = 0
+        fetch('http://api.weatherapi.com/v1/forecast.json?key=8fa9f2bce052424abcb14037220812&q=78717&aqi=no&days=2').then(response => response.json()).then(data => {
+            var temp = data['current']['temp_f']
+            document.getElementById('today').innerText = now.toLocaleTimeString().split(':')[0]  + ['AM ','PM '][Math.floor(now.getHours() /12)] + now.toDateString()
+            document.getElementById('curr').innerText = Math.round(temp)
+            document.getElementById('rain').innerText = ['not','is'][Number(Boolean(data['current']['precip_mm']))].toUpperCase()
+            if(now.getHours() <= 16){
+                document.getElementById('later').innerText = Math.round(data['forecast']['forecastday'][0]['hour'][15]["temp_f"])
+                document.getElementById('latrain').innerText = ['won\'t','will'][data['forecast']['forecastday'][0]['hour'][15]["will_it_rain"]].toUpperCase()
+                document.getElementById('choose').innerText = '4PM'
+            }else{
+                document.getElementById('choose').innerText = '8PM ' + (new Date(now.getTime()+84600000)).toDateString().toUpperCase()
+                document.getElementById('later').innerText = Math.round(data['forecast']['forecastday'][1]['hour'][7]["temp_f"])
+                document.getElementById('latrain').innerText = ['won\'t','will'][data['forecast']['forecastday'][1]['hour'][7]["will_it_rain"]].toUpperCase()
+
+            }
+        })
+        setInterval(()=>{
+            var now = new Date()
+            time.innerText = now.toLocaleTimeString().slice(0,now.toTimeString().length-19)
+           
+        })
+        document.head.innerHTML += 
+        `<style> 
+            *{
+                color:grey;
+                background-color:black;
+            }
+            #tiempo{
+                text-align:justify;
+                width:100%;
+                margin:0;
+                padding:0;
+                height:0px;
+                font-size:${2*window.innerWidth/(now.toTimeString().length-19)}px
+            }
+            td{
+                border:1px solid grey;
+                width:${window.innerWidth/3}px;
+                text-align:center;
+                font-size:${window.innerWidth/(now.toTimeString().length-19)/16}px
+            }
+        </style>`
+    </script>
+</body>
+</html>

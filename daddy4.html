@@ -1,0 +1,391 @@
+<html>
+    <head>
+    <style>
+    body{
+      margin: 0;
+      padding: 0;
+      font-size: 0.8em;
+      font-family: 'Lato', sans-serif;
+  }
+  .ui-datepicker{
+      background-color: white;
+  }
+  a[title='Prev'],a[title='Next']{
+      margin:2px;
+      font-weight: bold;
+  }
+  .ui-datepicker-title{
+      font-size:2em;
+      color:blue;
+  }
+  .ui-datepicker-year{
+      color:red;
+  }
+  .mainbody{
+      display: flex;
+  }
+  .firstbody{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+  }
+  .secbody{
+      width: 50%;
+  }
+  button:hover{
+      cursor: pointer;
+  }
+  #minifiedtext,#prettiertext{
+      width: 60%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      padding: 10px 20px;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+      border:2px solid red;
+      background-color: white;
+  }
+  #minified,#prettier{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  form{
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0px;
+  }
+  .form_job input,.form_job textarea,.form_job select{
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px;
+      width: 400px;
+      background-color: white;
+  }
+  .form_article input,.form_article textarea,.form_article select{
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px;
+      width: 400px;
+      background-color: white;
+  }
+  .form_faq input{
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      padding: 10px 20px;
+      width: 300px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: white;
+  }
+  .form_article textarea{
+      height: 20px;
+  }
+  .form_job textarea{
+      height: 50px;
+  }
+  .form_job span,.form_article span{
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
+  }
+  .form_faq span{
+      margin: 10px 0;
+  }
+  .btn{
+      border-radius: 10px;
+      border:none;
+      font-family: 'Lato', sans-serif;
+      font-weight: bold;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      padding: 7px 20px;
+      background-color: white;
+      border:1px solid red;
+      color: red;
+      margin-right:10px ;
+  }
+  .inner{
+      display: flex;
+      width: 90%;
+      align-items: center;
+      justify-content: space-around;
+  }
+  @media screen and (max-device-width: 800px) {
+      .mainbody{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+      form{
+          display: flex;
+          flex-direction: column;
+          width: 95%;
+      }
+      .form_job input,.form_job textarea,.form_job select{
+          width: 85%;
+      }
+      .form_article input,.form_article textarea,.form_article select{
+          width: 85%;
+      }
+      .form_faq input{
+          width: 75%;
+      }
+      .firstbody{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 95%;
+      }
+      .secbody{
+          width: 95%;
+      }
+      #minifiedtext,#prettiertext{
+          width: 90%;
+      }
+    }
+    </style>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <title></title>
+          <meta name="description" content="">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="all.css">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+          <link href="https://fonts.googleapis.com/css2?family=Lato&amp;family=Roboto&amp;display=swap" rel="stylesheet">
+          <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+          <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+      </head>
+      <body>
+          <h2 style="text-align: center;">Job Posting</h2>
+          <div class="mainbody">
+              <div class="firstbody">
+                  <button class="btn" onclick="clearForm()">Clear</button>
+                  <form class="form_job">
+                      <span>
+                          <label><b>Title (60 Character Max)</b></label>
+                          <input id="a1" type="name" value="" maxlength="60">
+                      </span>
+                      <span>
+                          <label>Description (150 Character Max)</label>
+                          <textarea id="a2" cols="30" rows="10" maxlength="500"></textarea>
+                      </span>
+                      <span>
+                          <label>Posted Date (dd/mm/yyyy)</label>
+                          <input id="a3" type="text" class='sicily' value="">
+                      </span>
+                      <span>
+                          <label>Expiry Date (dd/mm/yyyy)</label>
+                          <input id="a4" type="text" class='sicily' value="">
+                      </span>
+                      
+                      <span>
+                          <label>Company Name (60 Character Max)</label>
+                          <input id="a5" type="name" value="" maxlength="60">
+                      </span>
+                      
+                      <span>
+                          <label>Company URL (100 Character Max)</label>
+                          <input id="a6" type="url" value="" maxlength="100">
+                      </span>
+                      <span>
+                          <label>Employment Type</label>
+                          <select name="job" id="a7">
+                              <option value="FULL_TIME">FULL_TIME</option>
+                              <option value="CONTRACTOR">CONTRACTOR</option>
+                          </select>
+                      </span>
+                      
+                      <span>
+                          <label>City (60 Character Max)</label>
+                          <input id="a8" type="name" value="" maxlength="60">
+                      </span>
+                     
+                      <span>
+                          <label>State (60 Character Max)</label>
+                          <input id="a9" type="name" value="" maxlength="60">
+                      </span>
+                      
+                      <span>
+                          <label>Zip Code (10 digits max)</label>
+                          <input id="a10" type="name" value="" maxlength="10">
+                      </span>
+                      <span>
+                          <label>Minimum Salary (8 digits max)</label>
+                          <input id="a11" type="number" value="" maxlength="10">
+                      </span>
+                      <span>
+                          <label>Maximum Salary (8 digits max)</label>
+                          <input id="a12" type="number" value="" maxlength="10">
+                      </span>
+                  </form>
+              </div>   
+              <div class="secbody">
+                  <div id="minified">
+                      <div class="inner">
+                          <h4>Minified Version</h4>
+                          <button class="btn" style="background-color: red;color: white;" onclick="copyData()">Copy to Clipboard</button>
+                      </div>
+                      <textarea id="minifiedtext" cols="30" rows="10"></textarea>
+                  </div>
+                  <div id="prettier" style="margin-top: 30px;">
+                      <div class="inner">
+                          <h4>Prettier Version</h4>
+                      </div>
+                      <textarea id="prettiertext" cols="30" rows="10"></textarea>
+                  </div>
+              </div> 
+          </div>
+      
+      <script>
+          // defining variables
+          var a1=document.getElementById('a1');
+          var a2=document.getElementById('a2');
+          var a3=document.getElementById('a3');
+          var a4=document.getElementById('a4');
+          var a5=document.getElementById('a5');
+          var a6=document.getElementById('a6');
+          var a7=document.getElementById('a7');
+          var a8=document.getElementById('a8');
+          var a9=document.getElementById('a9');
+          var a10=document.getElementById('a10');
+          var a11=document.getElementById('a11');
+          var a12=document.getElementById('a12');
+          var a1text="";
+          var a2text="";
+          var a3text="";
+          var a4text="";
+          var a5text="";
+          var a6text="";
+          var a7text=a7.value;
+          var a8text="";
+          var a9text="";
+          var a10text="";
+          var a11text="";
+          var a12text="";
+          //setting the format
+            
+          //Date assigning
+          var date = new Date();
+          document.onready = $(function(){
+                $('.sicily').datepicker({
+                    dateFormat:'dd/mm/yy'
+                });
+          })
+        
+          
+          //a3.valueAsDate = date;
+          //a4.valueAsDate = date;
+          
+          a3text=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+          a4text=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+          //calling the function that shows value on text area
+          getValue();
+          //Adding event listerners
+          a1.addEventListener('input', function(e){
+              a1text = e.target.value;
+              getValue();
+          });
+          a2.addEventListener('input', function(e){
+              a2text = e.target.value;
+              getValue();
+          });
+          $('#a3').on('change', function(e){
+              a3text = $('#a3').val();
+              getValue();
+          });
+          $('#a4').on('change', function(e){
+              a4text = $('#a4').val();
+              getValue();
+          });
+          a5.addEventListener('input', function(e){
+              a5text = e.target.value;
+              getValue();
+          });
+          a6.addEventListener('input', function(e){
+              a6text = e.target.value;
+              getValue();
+          });
+          a7.addEventListener('input', function(e){
+              a7text = e.target.value;
+              getValue();
+          });
+          a8.addEventListener('input', function(e){
+              a8text = e.target.value;
+              getValue();
+          });
+          a9.addEventListener('input', function(e){
+              a9text = e.target.value;
+              getValue();
+          });
+          a10.addEventListener('input', function(e){
+              a10text = e.target.value;
+              getValue();
+          });
+          a11.addEventListener('input', function(e){
+              a11text = e.target.value;
+              getValue();
+          });
+          a12.addEventListener('input', function(e){
+              a12text = e.target.value;
+              getValue();
+          });
+          //Functions
+          function getValue(){
+              console.log(a11text!="" || a11text!="0");
+              console.log(a12text=="0" || a12text=="");
+              if((a11text=="" || a11text=="0") && (a12text=="" || a12text=="0")){
+                  document.getElementById("minifiedtext").value="<script \n type=\"application/ld+json\">{\"@context\": \"http://schema.org/\",\"@type\": \"JobPosting\",\"title\" : \""+a1text+"\",\"description\" : \","+a2text+"\",\"datePosted\" : \""+a3text+"\",\"validThrough\" : \""+a4text+"\",\"hiringOrganization\": {\"@type\": \"Organization\",\"sameAs\": \""+a6text+"\",\"name\": \""+a5text+"\"},\"employmentType\": [\""+a7text+"\"],\"baseSalary\": {\"@type\": \"MonetaryAmount\",\"currency\": \"USD\",\"value\": {\"@type\": \"QuantitativeValue\",\"value\": “NA”,\"unitText\": \"MONTH\"}},\"jobLocation\": {\"@type\": \"Place\",\"address\": {\"streetAddress\": \"\",\"addressLocality\": \""+a8text+"\",\"addressRegion\": \""+a9text+"\",\"postalCode\": \""+a10text+"\",\"addressCountry\": \"United States\"}}}\n<\/script>";
+                  document.getElementById("prettiertext").value="<script type=\"application/ld+json\">\n{\n\"@context\": \"http://schema.org/\",\n\"@type\": \"JobPosting\",\n\"title\" : \""+a1text+"\",\n\"description\" : \""+a2text+"\",\n\"datePosted\" : \""+a3text+"\",\n\"validThrough\" : \""+a4text+"\",\n\"hiringOrganization\": {\n\"@type\": \"Organization\",\n\"sameAs\": \""+a6text+"\",\n\"name\": \""+a5text+"\"\n},\n\"employmentType\": [\""+a7text+"\"],\n\"baseSalary\": {\n\"@type\": \"MonetaryAmount\",\n\"currency\": \"USD\",\n\"value\": {\n\"@type\": \"QuantitativeValue\",\n\"value\": “NA”,\n\"unitText\": \"MONTH\"\n}\n},\n\"jobLocation\": {\n\"@type\": \"Place\",\n\"address\": {\n\"streetAddress\": \"\",\n\"addressLocality\": \""+a8text+"\",\n\"addressRegion\": \""+a9text+"\",\n\"postalCode\": \""+a10text+"\",\n\"addressCountry\": \"United States\"\n}\n}\n}\n<\/script>";
+              }
+              
+              else if ((a11text!="" || a11text!="0") && (a12text=="0" || a12text=="")){
+                  document.getElementById("minifiedtext").value="<script \n type=\"application/ld+json\">{\"@context\": \"http://schema.org/\",\"@type\": \"JobPosting\",\"title\" : \""+a1text+"\",\"description\" : \","+a2text+"\",\"datePosted\" : \""+a3text+"\",\"validThrough\" : \""+a4text+"\",\"hiringOrganization\": {\"@type\": \"Organization\",\"sameAs\": \""+a6text+"\",\"name\": \""+a5text+"\"},\"employmentType\": [\""+a7text+"\"],\"baseSalary\": {\"@type\": \"MonetaryAmount\",\"currency\": \"USD\",\"value\": {\"@type\": \"QuantitativeValue\",\n\"value\": “"+a11text+"”,\"unitText\": \"MONTH\"}},\"jobLocation\": {\"@type\": \"Place\",\"address\": {\"streetAddress\": \"\",\"addressLocality\": \""+a8text+"\",\"addressRegion\": \""+a9text+"\",\"postalCode\": \""+a10text+"\",\"addressCountry\": \"United States\"}}}\n<\/script>";
+                  document.getElementById("prettiertext").value="<script type=\"application/ld+json\">\n{\n\"@context\": \"http://schema.org/\",\n\"@type\": \"JobPosting\",\n\"title\" : \""+a1text+"\",\n\"description\" : \""+a2text+"\",\n\"datePosted\" : \""+a3text+"\",\n\"validThrough\" : \""+a4text+"\",\n\"hiringOrganization\": {\n\"@type\": \"Organization\",\n\"sameAs\": \""+a6text+"\",\n\"name\": \""+a5text+"\"\n},\n\"employmentType\": [\""+a7text+"\"],\n\"baseSalary\": {\n\"@type\": \"MonetaryAmount\",\n\"currency\": \"USD\",\n\"value\": {\n\"@type\": \"QuantitativeValue\",\n\"value\": “"+a11text+"”,\n\"unitText\": \"MONTH\"\n}\n},\n\"jobLocation\": {\n\"@type\": \"Place\",\n\"address\": {\n\"streetAddress\": \"\",\n\"addressLocality\": \""+a8text+"\",\n\"addressRegion\": \""+a9text+"\",\n\"postalCode\": \""+a10text+"\",\n\"addressCountry\": \"United States\"\n}\n}\n}\n<\/script>";
+              }
+              else{
+                  document.getElementById("minifiedtext").value="<script \n type=\"application/ld+json\">{\"@context\": \"http://schema.org/\",\"@type\": \"JobPosting\",\"title\" : \""+a1text+"\",\"description\" : \","+a2text+"\",\"datePosted\" : \""+a3text+"\",\"validThrough\" : \""+a4text+"\",\"hiringOrganization\": {\"@type\": \"Organization\",\"sameAs\": \""+a6text+"\",\"name\": \""+a5text+"\"},\"employmentType\": [\""+a7text+"\"],\"baseSalary\": {\"@type\": \"MonetaryAmount\",\"currency\": \"USD\",\"value\": {\"@type\": \"QuantitativeValue\",\n\"minValue\": “"+a11text+"”,\n\"maxValue\": “"+a12text+"”,\"unitText\": \"MONTH\"}},\"jobLocation\": {\"@type\": \"Place\",\"address\": {\"streetAddress\": \"\",\"addressLocality\": \""+a8text+"\",\"addressRegion\": \""+a9text+"\",\"postalCode\": \""+a10text+"\",\"addressCountry\": \"United States\"}}}\n<\/script>";
+                  document.getElementById("prettiertext").value="<script type=\"application/ld+json\">\n{\n\"@context\": \"http://schema.org/\",\n\"@type\": \"JobPosting\",\n\"title\" : \""+a1text+"\",\n\"description\" : \""+a2text+"\",\n\"datePosted\" : \""+a3text+"\",\n\"validThrough\" : \""+a4text+"\",\n\"hiringOrganization\": {\n\"@type\": \"Organization\",\n\"sameAs\": \""+a6text+"\",\n\"name\": \""+a5text+"\"\n},\n\"employmentType\": [\""+a7text+"\"],\n\"baseSalary\": {\n\"@type\": \"MonetaryAmount\",\n\"currency\": \"USD\",\n\"value\": {\n\"@type\": \"QuantitativeValue\",\n\"minValue\": “"+a11text+"”,\n\"maxValue\": “"+a12text+"”,\n\"unitText\": \"MONTH\"\n}\n},\n\"jobLocation\": {\n\"@type\": \"Place\",\n\"address\": {\n\"streetAddress\": \"\",\n\"addressLocality\": \""+a8text+"\",\n\"addressRegion\": \""+a9text+"\",\n\"postalCode\": \""+a10text+"\",\n\"addressCountry\": \"United States\"\n}\n}\n}\n<\/script>";
+              }
+          }
+          function clearForm(){
+              a1.value="";
+              a2.value="";
+              //a3.valueAsDate = date;
+              //a4.valueAsDate = date;
+              a5.value="";
+              a6.value="";
+              a8.value="";
+              a9.value="";
+              a10.value="";
+              a11.value="";
+              a12.value="";
+              a1text="";
+              a2text="";
+              a3text=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+              a4text=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+              a5text="";
+              a6text="";
+              a8text="";
+              a9text="";
+              a10text="";
+              a11text="";
+              a12text="";
+              document.getElementById("minifiedtext").value = "";
+              document.getElementById("prettiertext").value = "";
+          }
+          function copyData(){
+              var copyText = document.getElementById("minifiedtext");
+              copyText.select();
+              copyText.setSelectionRange(0, 99999); 
+              navigator.clipboard.writeText(copyText.value);
+          }
+          
+      </script>
+  
+  </body></html>
