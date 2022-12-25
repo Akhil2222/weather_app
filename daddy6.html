@@ -24,7 +24,7 @@
         var time = document.getElementById('tiempo')
         var now = new Date()
         var iter = 0
-        fetch('http://api.weatherapi.com/v1/forecast.json?key=8fa9f2bce052424abcb14037220812&q=78717&aqi=no&days=2').then(response => response.json()).then(data => {
+        fetch('https://api.weatherapi.com/v1/forecast.json?key=8fa9f2bce052424abcb14037220812&q=78717&aqi=no&days=2').then(response => response.json()).then(data => {
             var temp = data['current']['temp_f']
             document.getElementById('today').innerText = now.toLocaleTimeString().split(':')[0]  + ['AM ','PM '][Math.floor(now.getHours() /12)] + now.toDateString()
             document.getElementById('curr').innerText = Math.round(temp)
